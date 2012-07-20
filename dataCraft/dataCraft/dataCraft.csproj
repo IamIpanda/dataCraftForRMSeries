@@ -44,6 +44,7 @@
     <Compile Include="dcObject.cs" />
     <Compile Include="dcBaseTypeExandetc.cs" />
     <Compile Include="dcSymbol.cs" />
+    <Compile Include="dcTable.cs" />
     <Compile Include="FileCross.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

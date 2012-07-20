@@ -9,7 +9,7 @@ namespace dataCraft
 {
     public class dcInt : dcDataWithTrueValueBase<long>
     {
-        public dcInt(long i): base(i) { }
+        public dcInt(long i) : base(i) { }
         public override void Clear()
         {
             value = 0;
@@ -22,7 +22,7 @@ namespace dataCraft
     // 结构不佳 准备重构
     public class dcBool : dcDataWithTrueValueBase<bool>
     {
-        public dcBool(bool b): base(b) { }
+        public dcBool(bool b) : base(b) { }
         public override void Clear()
         {
             value = false;
@@ -37,10 +37,7 @@ namespace dataCraft
             {
                 return value.Equals((obj as dcBool).Value);
             }
-            if ((bool)obj)
-                return value ? true : false;
-            else
-                return value ? false : true;
+            return ((bool)obj) == value;
         }
         public override int GetHashCode()
         {
@@ -59,61 +56,61 @@ namespace dataCraft
             return new dcRegexp(new Regex(value.ToString(), value.Options));
         }
     }
-	public class dcFloat : dcDataWithTrueValueBase<double>
-	{        
+    public class dcFloat : dcDataWithTrueValueBase<double>
+    {
         public dcFloat(double i) : base(i) { }
         public override void Clear()
-		{
-			value = 0.0;
-		}
+        {
+            value = 0.0;
+        }
         public override object Clone()
         {
-            return new dcFloat(value);    
+            return new dcFloat(value);
         }
-	}
-	public class dcRect : dcDataWithTrueValueBase<Rectangle>
-	{
+    }
+    public class dcRect : dcDataWithTrueValueBase<Rectangle>
+    {
         public dcRect(Rectangle r) : base(r) { }
         public override void Clear()
-		{
-			value = new Rectangle();
-		}
+        {
+            value = new Rectangle();
+        }
         public override object Clone()
         {
             return new dcRect(new Rectangle(value.X, value.Y, value.Width, Value.Height));
         }
-	}
-	public class dcColor : dcDataWithTrueValueBase<Color>
-	{
+    }
+    public class dcColor : dcDataWithTrueValueBase<Color>
+    {
         public dcColor(Color c) : base(c) { }
         public override void Clear()
-		{
-			value = Color.FromArgb(0,0,0,0);
-		}
+        {
+            value = Color.FromArgb(0, 0, 0, 0);
+        }
         public override object Clone()
         {
             return new dcColor(Color.FromArgb(value.A, value.R, value.G, value.B));
         }
-	}
-	public class dcString : dcDataWithTrueValueBase<string>
-	{
+    }
+    public class dcString : dcDataWithTrueValueBase<string>
+    {
         public dcString(String s) : base(s) { }
         public override void Clear()
-		{
-			value = "";
-		}
+        {
+            value = "";
+        }
         public override object Clone()
         {
             return new dcString(value.Clone() as string);
         }
-	}
-	public class dcArray : dcDataWithTrueValueBase<List<dcData>>
-	{
+    }
+    public class dcArray : dcDataWithTrueValueBase<List<dcData>>
+    {
         public dcArray(List<dcData> l) : base(l) { }
         public override void Clear()
-		{
-			value.Clear();
-		}
+        {
+            value.Clear();
+        }
         public override object Clone()
         {
             List<dcData> newone = new List<dcData>();
@@ -142,20 +139,20 @@ namespace dataCraft
             b.Append("]");
             return b.ToString();
         }
-	}
-	public class dcHash : dcDataWithTrueValueBase<Dictionary<dcData,dcData>>
-	{
+    }
+    public class dcHash : dcDataWithTrueValueBase<Dictionary<dcData, dcData>>
+    {
         public dcHash(Dictionary<dcData, dcData> d) : base(d) { }
         public override void Clear()
-		{
-			value.Clear();
-		}
+        {
+            value.Clear();
+        }
         public override object Clone()
         {
             Dictionary<dcData, dcData> newone = new Dictionary<dcData, dcData>();
             foreach (dcData data in value.Keys)
             {
-                newone.Add(data.Clone() as dcData,value[data].Clone() as dcData);
+                newone.Add(data.Clone() as dcData, value[data].Clone() as dcData);
             }
             return newone;
         }
@@ -180,11 +177,6 @@ namespace dataCraft
             b.Append("}");
             return b.ToString();
         }
-	}
-    public abstract class dcTable 
-    {
-        abstract int Dimensions { get; }
-        abstract short this[int x, int y, int z] { get; set; }
     }
 
 }
