@@ -42,7 +42,7 @@
     <Compile Include="dcIntandetc.cs" />
     <Compile Include="dcNil.cs" />
     <Compile Include="dcObject.cs" />
-    <Compile Include="dcSBaseTypeExandetc.cs" />
+    <Compile Include="dcBaseTypeExandetc.cs" />
     <Compile Include="dcSymbol.cs" />
     <Compile Include="FileCross.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

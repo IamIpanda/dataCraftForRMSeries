@@ -181,10 +181,10 @@ namespace dataCraft
             return b.ToString();
         }
 	}
-	// 留议
-    /*
-	public class dcTable : dcDataWithTrueValueBase<int[,,]>
-	{
+    public abstract class dcTable 
+    {
+        abstract int Dimensions { get; }
+        abstract short this[int x, int y, int z] { get; set; }
+    }
 
-	}*/
 }
